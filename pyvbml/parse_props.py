@@ -56,4 +56,5 @@ def _render(template: str, ctx: dict) -> str:
 
 
 def parse_props(props: VBMLProps, template: str) -> str:
+    """Parse props."""
     return _render(template, props)

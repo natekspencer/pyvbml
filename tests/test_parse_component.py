@@ -17,7 +17,7 @@ from pyvbml.types import Align, Justify
 
 
 def _pc(height, width, props=None):
-    """parseComponent(height, width, props?)(component) → result"""
+    """parseComponent(height, width, props?)(component) → result."""
 
     def _call(component):
         return parse_component(height, width, props or {}, component)
@@ -26,7 +26,7 @@ def _pc(height, width, props=None):
 
 
 def _pac(height, width, props=None):
-    """parseAbsoluteComponent(height, width, props?)(component) → result"""
+    """parseAbsoluteComponent(height, width, props?)(component) → result."""
 
     def _call(component):
         return parse_absolute_component(height, width, props or {}, component)
@@ -40,13 +40,13 @@ def _pac(height, width, props=None):
 
 
 def test_formats_plain_text() -> None:
-    """Should format a message with plain text"""
+    """Should format a message with plain text."""
     result = _pc(1, 12)({"template": "Hello World!"})
     assert result == [[8, 5, 12, 12, 15, 0, 23, 15, 18, 12, 4, 37]]
 
 
 def test_formats_longer_plain_text() -> None:
-    """Should format a longer message with plain text"""
+    """Should format a longer message with plain text."""
     result = _pc(2, 12)({"template": "Thank you for having us!"})
     assert result == [
         [20, 8, 1, 14, 11, 0, 25, 15, 21, 0, 0, 0],
@@ -55,7 +55,7 @@ def test_formats_longer_plain_text() -> None:
 
 
 def test_formats_longer_message_centered() -> None:
-    """Should format a longer message center with plain text"""
+    """Should format a longer message center with plain text."""
     result = _pc(2, 22)(
         {
             "template": "Thank you for having us!",
@@ -92,13 +92,13 @@ def test_formats_longer_message_centered() -> None:
 
 
 def test_adds_extra_spaces() -> None:
-    """Should add extra spaces"""
+    """Should add extra spaces."""
     result = _pc(1, 13)({"template": "Hello World!"})
     assert result == [[8, 5, 12, 12, 15, 0, 23, 15, 18, 12, 4, 37, 0]]
 
 
 def test_automatically_breaks_line() -> None:
-    """Should automatically break the line"""
+    """Should automatically break the line."""
     result = _pc(2, 6)({"template": "Hello World!"})
     assert result == [
         [8, 5, 12, 12, 15, 0],
@@ -107,7 +107,7 @@ def test_automatically_breaks_line() -> None:
 
 
 def test_does_not_break_when_unnecessary() -> None:
-    """Should not break the line if it doesn't need to"""
+    """Should not break the line if it doesn't need to."""
     result = _pc(3, 13)({"template": "Hello World!"})
     assert result == [
         [8, 5, 12, 12, 15, 0, 23, 15, 18, 12, 4, 37, 0],
@@ -117,43 +117,43 @@ def test_does_not_break_when_unnecessary() -> None:
 
 
 def test_vertically_aligns_bottom() -> None:
-    """Should vertically align bottom"""
+    """Should vertically align bottom."""
     result = _pc(4, 1)({"template": "!", "style": {"align": Align.BOTTOM}})
     assert result == [[0], [0], [0], [37]]
 
 
 def test_vertically_aligns_center() -> None:
-    """Should vertically align to the center"""
+    """Should vertically align to the center."""
     result = _pc(3, 1)({"template": "!", "style": {"align": Align.CENTER}})
     assert result == [[0], [37], [0]]
 
 
 def test_vertically_aligns_center_multiple_rows() -> None:
-    """Should vertically align to the center with multiple rows"""
+    """Should vertically align to the center with multiple rows."""
     result = _pc(5, 1)({"template": "!", "style": {"align": Align.CENTER}})
     assert result == [[0], [0], [37], [0], [0]]
 
 
 def test_vertically_aligns_center_sticks_to_top_when_no_even_padding() -> None:
-    """Should vertically align to the center by sticking to the top if there is not even padding"""
+    """Should vertically align to the center by sticking to the top if there is not even padding."""
     result = _pc(6, 1)({"template": "!", "style": {"align": Align.CENTER}})
     assert result == [[0], [0], [37], [0], [0], [0]]
 
 
 def test_horizontally_aligns_right() -> None:
-    """Should horizontally align right"""
+    """Should horizontally align right."""
     result = _pc(1, 3)({"template": "!", "style": {"justify": Justify.RIGHT}})
     assert result == [[0, 0, 37]]
 
 
 def test_horizontally_aligns_center() -> None:
-    """Should horizontally align center"""
+    """Should horizontally align center."""
     result = _pc(1, 3)({"template": "!", "style": {"justify": Justify.CENTER}})
     assert result == [[0, 37, 0]]
 
 
 def test_horizontally_aligns_justified() -> None:
-    """Should horizontally align justified"""
+    """Should horizontally align justified."""
     result = _pc(6, 22)(
         {
             "template": "Testing Testing 123",
@@ -194,7 +194,7 @@ def test_horizontally_aligns_justified() -> None:
 
 
 def test_justified_when_full_line_covered() -> None:
-    """Should horizontally align justified when the full line is covered"""
+    """Should horizontally align justified when the full line is covered."""
     result = _pc(6, 22)(
         {
             "template": "Testing Testing 123456",
@@ -235,7 +235,7 @@ def test_justified_when_full_line_covered() -> None:
 
 
 def test_justified_when_flowing_to_next_line() -> None:
-    """Should horizontally align justified when we flow to the next line"""
+    """Should horizontally align justified when we flow to the next line."""
     result = _pc(6, 22)(
         {
             "template": "Testing Testing 123456789",
@@ -253,7 +253,7 @@ def test_justified_when_flowing_to_next_line() -> None:
 
 
 def test_justified_long_complex_message() -> None:
-    """Should horizontally align justified a long complex message"""
+    """Should horizontally align justified a long complex message."""
     result = _pc(6, 22)(
         {
             "template": "Pack my box with five dozen liquor jugs. The quick brown fox jumps over the lazy dog. How vexingly quick daft zebras jump!",
@@ -340,7 +340,7 @@ def test_justified_long_complex_message() -> None:
 
 
 def test_horizontally_and_vertically_aligned_center() -> None:
-    """Should horizontally and vertically align center"""
+    """Should horizontally and vertically align center."""
     result = _pc(3, 3)(
         {
             "template": "!",
@@ -351,7 +351,7 @@ def test_horizontally_and_vertically_aligned_center() -> None:
 
 
 def test_parses_character_codes() -> None:
-    """Should parse character codes"""
+    """Should parse character codes."""
     result = _pc(1, 3)(
         {
             "template": "{1}{2}{3}",
@@ -362,7 +362,7 @@ def test_parses_character_codes() -> None:
 
 
 def test_breaks_on_lines_with_character_codes() -> None:
-    """Should break on lines with character codes"""
+    """Should break on lines with character codes."""
     result = _pc(2, 3)(
         {
             "template": "{1}{2} {3}{4}",
@@ -373,7 +373,7 @@ def test_breaks_on_lines_with_character_codes() -> None:
 
 
 def test_parses_two_digit_character_codes() -> None:
-    """Should parse two-digit character codes"""
+    """Should parse two-digit character codes."""
     result = _pc(1, 2)(
         {
             "template": "{68}{69}",
@@ -384,7 +384,7 @@ def test_parses_two_digit_character_codes() -> None:
 
 
 def test_throws_for_invalid_character_codes() -> None:
-    """Should throw for invalid character codes"""
+    """Should throw for invalid character codes."""
     raised = False
     try:
         _pc(1, 1)(
@@ -399,19 +399,19 @@ def test_throws_for_invalid_character_codes() -> None:
 
 
 def test_allows_newlines() -> None:
-    """Should allow newlines"""
+    """Should allow newlines."""
     result = _pc(2, 2)({"template": "{1}\n{1}"})
     assert result == [[1, 0], [1, 0]]
 
 
 def test_allows_newlines_after_spaces() -> None:
-    """Should allow newlines after spaces"""
+    """Should allow newlines after spaces."""
     result = _pc(2, 2)({"template": "{1} \n{1}"})
     assert result == [[1, 0], [1, 0]]
 
 
 def test_allows_newlines_before_spaces() -> None:
-    """Should allow newlines before spaces"""
+    """Should allow newlines before spaces."""
     result = _pc(2, 2)(
         {"template": "{1}\n{70}{1}", "style": {"justify": Justify.CENTER}}
     )
@@ -419,7 +419,7 @@ def test_allows_newlines_before_spaces() -> None:
 
 
 def test_adds_template_props() -> None:
-    """Should add template props"""
+    """Should add template props."""
     result = _pc(1, 11, {"greeting": "Hello"})({"template": "{{greeting}} World"})
     assert result == [[8, 5, 12, 12, 15, 0, 23, 15, 18, 12, 4]]
 
@@ -435,7 +435,7 @@ def test_allows_conditions() -> None:
 
 
 def test_allows_array_iteration() -> None:
-    """Should allow arrays to be iterated"""
+    """Should allow arrays to be iterated."""
     result = _pc(1, 3, {"numbers": [1, 2, 3]})(
         {"template": "{{#numbers}}{{.}}{{/numbers}}"}
     )
@@ -443,13 +443,13 @@ def test_allows_array_iteration() -> None:
 
 
 def test_splits_long_words() -> None:
-    """Should split long words"""
+    """Should split long words."""
     result = _pc(2, 2)({"template": "{1}{2}{3}{4}"})
     assert result == [[1, 2], [3, 4]]
 
 
 def test_parses_absolute_component() -> None:
-    """Should parse absolute component"""
+    """Should parse absolute component."""
     component = {
         "template": "Hello World!",
         "style": {"absolutePosition": {"x": 4, "y": 2}, "width": 6, "height": 2},
@@ -466,12 +466,12 @@ def test_parses_absolute_component() -> None:
 
 
 def test_parses_raw_component() -> None:
-    """Should parse a raw component"""
+    """Should parse a raw component."""
     result = _pc(3, 12)({"rawCharacters": [[1, 2], [3, 4]]})
     assert result == [[1, 2], [3, 4]]
 
 
 def test_converts_emoji_characters_to_character_codes() -> None:
-    """Should convert emoji characters to character codes"""
+    """Should convert emoji characters to character codes."""
     result = _pc(1, 8)({"template": "🟥🟧🟨🟩🟦🟪⬜⬛"})
     assert result == [[63, 64, 65, 66, 67, 68, 69, 70]]

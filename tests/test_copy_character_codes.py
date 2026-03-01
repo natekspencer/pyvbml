@@ -9,7 +9,7 @@ from pyvbml.copy_character_codes import copy_character_codes
 
 
 def test_deep_copies_character_codes() -> None:
-    """Should deep copy character codes"""
+    """Should deep copy character codes."""
     characters = [[1, 2]]
     result = copy_character_codes(characters)
 

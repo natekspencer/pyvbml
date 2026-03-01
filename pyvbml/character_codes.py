@@ -336,10 +336,7 @@ def _validate_character_code(code: int) -> int:
 
 
 def convert_characters_to_character_codes(characters: str) -> list[int]:
-    """
-    Convert a string (possibly containing {N} colour/character codes) into a
-    list of integer character codes.  Mirrors the TS reduce-based implementation.
-    """
+    """Convert a string (possibly containing {N} colour/character codes) into a list of integer character codes."""
     result: list[int] = []
     i = 0
     while i < len(characters):
@@ -360,7 +357,7 @@ def convert_characters_to_character_codes(characters: str) -> list[int]:
 
 
 def mapping_to_character(character: str) -> str:
-    """Mapping to character."""
+    """Map a character."""
     if character == _VARIATION_SELECTOR_SIXTEEN:
         return ""
 
