@@ -11,6 +11,27 @@
 
 A Python package for parsing [Vestaboard markup language (VBML)](https://docs.vestaboard.com/docs/vbml/) to Vestaboard character arrays locally. Based on the [Vestaboard/vbml](https://github.com/Vestaboard/vbml) codebase. Used in the [Vestaboard for Home Assistant integration](https://github.com/natekspencer/ha-vestaboard).
 
+## Usage
+
+```python
+from pyvbml import Align, Justify, vbml
+
+# Generate an array of 6 rows of 22 character codes representing the template
+characters = vbml.parse(
+    {
+        "components": [
+            {
+                "style": {
+                    "justify": Justify.CENTER,
+                    "align": Align.CENTER,
+                },
+                "template": "Hello World!",
+            },
+        ],
+    }
+)
+```
+
 ## ❤️ Support Me
 
 I maintain this python project in my spare time. If you find it useful, consider supporting development:
@@ -20,6 +41,10 @@ I maintain this python project in my spare time. If you find it useful, consider
 - 💸 [PayPal (direct support)](https://www.paypal.com/paypalme/natekspencer)
 - ⭐ [Star this project](https://github.com/natekspencer/pyvbml)
 - 📦 If you’d like to support in other ways, such as donating hardware for testing, feel free to [reach out to me](https://github.com/natekspencer)
+
+If you don't already own a Vestaboard, please consider using my referral link below to get $200 off (as well as a $200 referral bonus to me in appreciation)!
+
+[Save $200 off a Vestaboard](https://web.vestaboard.com/referral?vbref=ZWVLZW)
 
 ## 📈 Star History
 

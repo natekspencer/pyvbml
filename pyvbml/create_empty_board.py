@@ -10,4 +10,4 @@ from .character_codes import CharacterCode
 
 def create_empty_board(rows: int, columns: int) -> list[list[int]]:
     """Create an empty board of *rows* * *columns*."""
-    return [[CharacterCode.BLANK] * columns for _ in range(rows)]
+    return [[int(CharacterCode.BLANK)] * columns for _ in range(rows)]
