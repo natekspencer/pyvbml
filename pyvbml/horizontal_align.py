@@ -34,7 +34,7 @@ def horizontal_align(
         out = []
         for row in codes:
             stripped = list(reversed(_remove_extra_space(list(reversed(row)))))
-            result: list[int] = [CharacterCode.BLANK] * width
+            result: list[int] = [int(CharacterCode.BLANK)] * width
             for i, val in enumerate(reversed(stripped)):
                 if i < width:
                     result[width - 1 - i] = val
@@ -49,7 +49,9 @@ def horizontal_align(
         padding = min(padding_right, padding_left)
         return [
             [
-                row[i - padding] if 0 <= i - padding < len(row) else CharacterCode.BLANK
+                row[i - padding]
+                if 0 <= i - padding < len(row)
+                else int(CharacterCode.BLANK)
                 for i in range(width)
             ]
             for row in rows
@@ -64,7 +66,7 @@ def horizontal_align(
             [
                 stripped[i - padding_left]
                 if 0 <= i - padding_left < len(stripped)
-                else CharacterCode.BLANK
+                else int(CharacterCode.BLANK)
                 for i in range(width)
             ]
         )

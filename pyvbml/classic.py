@@ -1,5 +1,6 @@
-"""
-classic.py — Port of Vestaboard/vbml/src/classic.ts
+"""Classic.
+
+Port of Vestaboard/vbml/src/classic.ts
 
 A direct translation of formatter.kt → TypeScript → Python.
 https://docs.vestaboard.com/docs/characterCodes
@@ -10,6 +11,7 @@ from __future__ import annotations
 import math
 import re
 
+from .const import DIMENSIONS_FLAGSHIP
 from .emojis_to_character_codes import emojis_to_character_codes
 
 # ---------------------------------------------------------------------------
@@ -145,8 +147,8 @@ _VESTA_MAP: dict[str, int] = {
     **{f"{{{i}}}": i for i in range(72)},
 }
 
-_ROW_COUNT = 6
-_COLUMN_COUNT = 22
+_ROW_COUNT = DIMENSIONS_FLAGSHIP[0]
+_COLUMN_COUNT = DIMENSIONS_FLAGSHIP[1]
 
 _WORD_CHAR_RE = re.compile(r"[a-zA-Z]+|\{\.?\d+\}|\d+|\s+|[^\w\s]", re.ASCII)
 _WORD_CHAR_DSPACE_RE = re.compile(r"[a-zA-Z]+|\{\.?\d+\}|\d+| {2}| |[^\w\s]", re.ASCII)

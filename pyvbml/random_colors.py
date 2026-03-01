@@ -8,11 +8,12 @@ from __future__ import annotations
 import random
 
 from .character_codes import COLOR_CODES, CharacterCode
+from .const import DIMENSIONS_FLAGSHIP
 
 
 def random_colors(
-    rows: int = 6,
-    columns: int = 22,
+    rows: int = DIMENSIONS_FLAGSHIP[0],
+    columns: int = DIMENSIONS_FLAGSHIP[1],
     colors: list[CharacterCode] | list[int] | None = None,
 ) -> list[list[int]]:
     """Random colors."""
