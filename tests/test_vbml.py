@@ -5,13 +5,12 @@ Port from Vestaboard/vbml/src/__tests__/vbml.spec.ts
 
 from __future__ import annotations
 
-from pyvbml.index import VBML
-from pyvbml.types import Align, Justify
+from pyvbml import Align, Justify, vbml
 
 
 def test_parses_single_component() -> None:
     """Should parse a single component on a board."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 1, "width": 2},
             "components": [{"template": "hi"}],
@@ -22,7 +21,7 @@ def test_parses_single_component() -> None:
 
 def test_layouts_components_side_by_side() -> None:
     """Should layout components side by side."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 1, "width": 4},
             "components": [
@@ -36,7 +35,7 @@ def test_layouts_components_side_by_side() -> None:
 
 def test_formats_ae_umlaut() -> None:
     """Should format äÄ to aeae."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 1, "width": 4},
             "components": [{"template": "äÄ", "style": {"width": 4, "height": 1}}],
@@ -47,7 +46,7 @@ def test_formats_ae_umlaut() -> None:
 
 def test_layouts_components_vertically() -> None:
     """Should layout components vertically."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 2, "width": 2},
             "components": [
@@ -61,7 +60,7 @@ def test_layouts_components_vertically() -> None:
 
 def test_flows_third_component_to_next_line() -> None:
     """Should flow a third component to the next line."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 2, "width": 4},
             "components": [
@@ -76,7 +75,7 @@ def test_flows_third_component_to_next_line() -> None:
 
 def test_justifies_content_vertically() -> None:
     """Should justify the content vertically."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 5, "width": 1},
             "components": [
@@ -92,7 +91,7 @@ def test_justifies_content_vertically() -> None:
 
 def test_justifies_content_vertically_three_chars() -> None:
     """Should justify the content vertically with three characters and rows."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 5, "width": 1},
             "components": [
@@ -108,7 +107,7 @@ def test_justifies_content_vertically_three_chars() -> None:
 
 def test_layouts_absolute_components_by_relative() -> None:
     """Should layout absolute components by relative components."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 22, "width": 6},
             "components": [
@@ -141,7 +140,7 @@ def test_layouts_absolute_components_by_relative() -> None:
 
 def test_layouts_absolute_over_relative_components() -> None:
     """Should layout absolute components over relative components."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 22, "width": 6},
             "components": [
@@ -173,7 +172,7 @@ def test_layouts_absolute_over_relative_components() -> None:
 
 def test_layouts_absolute_over_relative_components_standard_size() -> None:
     """Should layout absolute components over relative components (standard board size)."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 6, "width": 22},
             "components": [
@@ -205,7 +204,7 @@ def test_layouts_absolute_over_relative_components_standard_size() -> None:
 
 def test_layouts_raw_components() -> None:
     """Should layout raw components."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 6, "width": 22},
             "components": [{"rawCharacters": [[1, 2, 3]]}],
@@ -217,7 +216,7 @@ def test_layouts_raw_components() -> None:
 
 def test_mountain_background_clock() -> None:
     """Should layout absolute components with raw components for a mountain background clock."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "props": {"time": "12:00 PM"},
             "style": {"height": 6, "width": 22},
@@ -531,7 +530,7 @@ def test_mountain_background_clock() -> None:
 
 def test_calendar_component_christmas() -> None:
     """Should layout a calendar component for Christmas 🎄."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 6, "width": 22},
             "components": [
@@ -561,7 +560,7 @@ def test_calendar_component_christmas() -> None:
 
 def test_minimalist_calendar() -> None:
     """Should layout a minimalist calendar component."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 6, "width": 22},
             "components": [
@@ -594,7 +593,7 @@ def test_minimalist_calendar() -> None:
 
 def test_calendar_with_other_components() -> None:
     """Should layout a calendar component with other components."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 6, "width": 22},
             "components": [
@@ -685,7 +684,7 @@ def test_calendar_with_other_components() -> None:
 
 def test_calendar_on_the_right() -> None:
     """Should layout a calendar component on the right."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 6, "width": 22},
             "components": [
@@ -746,7 +745,7 @@ def test_calendar_on_the_right() -> None:
 
 def test_respects_double_returns() -> None:
     """Should respect double returns."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 3, "width": 2},
             "components": [
@@ -762,7 +761,7 @@ def test_respects_double_returns() -> None:
 
 def test_respects_triple_returns() -> None:
     """Should respect triple returns."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 4, "width": 2},
             "components": [
@@ -778,7 +777,7 @@ def test_respects_triple_returns() -> None:
 
 def test_random_colors() -> None:
     """Should let us use random colors."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 1, "width": 1},
             "components": [{"randomColors": {"colors": [61]}}],
@@ -789,7 +788,7 @@ def test_random_colors() -> None:
 
 def test_vestaboard_note() -> None:
     """Test Vestaboard Note."""
-    result = VBML.parse(
+    result = vbml.parse(
         {
             "style": {"height": 3, "width": 15},
             "components": [
