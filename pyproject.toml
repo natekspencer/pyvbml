@@ -32,6 +32,10 @@ include = ["pyvbml"]
 [tool.hatch.version]
 source = "uv-dynamic-versioning"
 
+[tool.ruff.lint]
+select = ["D"]
+ignore = ["D203", "D213"]
+
 [tool.ruff.lint.isort]
 force-sort-within-sections = true
 forced-separate = ["tests"]

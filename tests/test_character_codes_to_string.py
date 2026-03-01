@@ -9,12 +9,12 @@ from pyvbml.character_codes_to_string import character_codes_to_string
 
 
 def test_converts_word_to_string() -> None:
-    """Should convert a word to a string"""
+    """Should convert a word to a string."""
     assert character_codes_to_string([[1, 2]]) == "AB"
 
 
 def test_converts_two_line_sentence() -> None:
-    """Should convert two-line sentence"""
+    """Should convert two-line sentence."""
     result = character_codes_to_string(
         [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -75,7 +75,7 @@ def test_converts_two_line_sentence() -> None:
 
 
 def test_handles_breaks_gracefully() -> None:
-    """Should handle breaks"""
+    """Should handle breaks."""
     result = character_codes_to_string(
         [
             [0, 0, 8, 1, 14, 4, 12, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -86,7 +86,7 @@ def test_handles_breaks_gracefully() -> None:
 
 
 def test_handles_line_breaks() -> None:
-    """Should handle line breaks"""
+    """Should handle line breaks."""
     result = character_codes_to_string(
         [[1, 2, 0, 0, 0], [3, 4, 0, 0, 0]],
         {"allowLineBreaks": True},
@@ -95,7 +95,7 @@ def test_handles_line_breaks() -> None:
 
 
 def test_no_line_break_when_first_word_fits_on_previous_line() -> None:
-    """Should assume there is no line break if the first word can fit on the previous line"""
+    """Should assume there is no line break if the first word can fit on the previous line."""
     result = character_codes_to_string(
         [[1, 0], [2, 0]],
         {"allowLineBreaks": True},

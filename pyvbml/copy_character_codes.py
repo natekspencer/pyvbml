@@ -7,5 +7,5 @@ from __future__ import annotations
 
 
 def copy_character_codes(characters: list[list[int]]) -> list[list[int]]:
-    """Returns a deep copy of the character codes array."""
+    """Return a deep copy of the character codes array."""
     return [row[:] for row in characters]

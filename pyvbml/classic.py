@@ -272,7 +272,10 @@ def classic(
     padded = empty_row_paddings + padded_content + empty_row_paddings
 
     def flatten(row) -> list[int]:
-        """A row is either a flat list[int] (empty padding) or list[list[int]] (content)."""
+        """Flatten a row.
+
+        A row is either a flat list[int] (empty padding) or list[list[int]] (content).
+        """
         if not row:
             return []
         if isinstance(row[0], list):
