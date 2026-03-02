@@ -19,4 +19,4 @@ def random_colors(
     """Random colors."""
     if colors is None:
         colors = COLOR_CODES
-    return [[random.choice(colors) for _ in range(columns)] for _ in range(rows)]
+    return [[int(random.choice(colors)) for _ in range(columns)] for _ in range(rows)]
