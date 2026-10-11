@@ -5,13 +5,8 @@ Port of Vestaboard/vbml/src/types.ts
 
 from __future__ import annotations
 
-import sys
+from enum import StrEnum
 from typing import Any, TypedDict
-
-if sys.version_info >= (3, 11):
-    from enum import StrEnum
-else:
-    from backports.strenum import StrEnum
 
 
 class Justify(StrEnum):
